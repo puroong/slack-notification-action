@@ -1,0 +1,12 @@
+name: "slack-notification-action"
+description: "send slack notifications with hooks"
+inputs:
+  job:
+    description: 'job to run'
+    required: true
+output:
+  result:
+    description: 'job result'
+runs:
+  using: 'node12'
+  main: 'index.js'
