@@ -1,12 +1,13 @@
 name: "slack-notification-action"
 description: "send slack notifications with hooks"
 inputs:
-  job:
-    description: 'job to run'
+  slack-webhook-url:
+    description: 'slack webhook url'
     required: true
-output:
-  result:
-    description: 'job result'
+  slack-message:
+    description: 'slack messgae to send'
+    required: true
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: 'composite'
+  steps:
+    - run: curl -X POST -H "Content-Type:application/json" --data '{"text":"${{ inputs.slack-message }}"}' ${{ inputs.slack-webhook-url }}
