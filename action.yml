@@ -11,3 +11,4 @@ runs:
   using: 'composite'
   steps:
     - run: curl -X POST -H "Content-Type:application/json" --data '{"text":"${{ inputs.slack-message }}"}' ${{ inputs.slack-webhook-url }}
+      shell: bash
